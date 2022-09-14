@@ -2,10 +2,12 @@ public class OnlineReader {
 
     public static void main(String[] args) {
 
-        Authors levTolstoy = new Authors("Лев", "Толстой");
+        Authors levTolstoy = new Authors("", "Толстой");
 
-        Book warAndPeace = new Book("Война и мир", "роман", levTolstoy, 4, 1300, 10);
-        Book garnetBracelet = new Book("Грана́товый брасле́т", "повесть",  new Authors("Александр", "Куприн"), 160, 9);
+        Book warAndPeace = new Book("Война и мир", "роман", levTolstoy, 4, 1300,
+                10);
+        Book garnetBracelet = new Book("Грана́товый брасле́т", "повесть",
+                new Authors("Александр", "Куприн"), 160, 9);
 
         // выставляем рейтинги книгам
         warAndPeace.estimate(5);
@@ -25,9 +27,9 @@ public class OnlineReader {
         System.out.println("Всего книг в библиотеке: " + Book.totalBook);
 
         System.out.println("Рейтинги книг: ");
-        System.out.println(warAndPeace.author + " " + warAndPeace.bookName + " рейтинг книги среди читателей "
+        System.out.println(warAndPeace.getAuthor() + " " + warAndPeace.getBookName() + " рейтинг книги среди читателей "
                 + warAndPeace.getRating());
-        System.out.println(garnetBracelet.author + " " + garnetBracelet.bookName + " рейтинг книги среди читателей "
+        System.out.println(garnetBracelet.getAuthor() + " " + garnetBracelet.getBookName() + " рейтинг книги среди читателей "
                 + garnetBracelet.getRating());
 
         User arturVoronchuk = new User("Артур", "Ворончук", "a.voronchuk@pochta.ru");

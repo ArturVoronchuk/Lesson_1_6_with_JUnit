@@ -1,12 +1,14 @@
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
+@AllArgsConstructor
 public class Authors {
 
-    String firstname;
-    String surname;
-
-    public Authors(String firstname, String surname) {
-        this.firstname = firstname;
-        this.surname = surname;
-    }
+    private String firstname;
+    private String surname;
 
     public String toString() {
         return firstname + " " + surname;

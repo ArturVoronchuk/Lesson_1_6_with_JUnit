@@ -1,16 +1,29 @@
-public class Book<String> {
-    String bookName;   // название книги
-    String genre;      // жанр
-    Authors author;    // ФИО автора получаем из класса Authors
-    int numberVolumes; // количество томов
-    int numberPages;   // количество страниц
-    int fontSize;      // размер шрифта
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class Book {
+    private String bookName;   // название книги
+    private String genre;      // жанр
+    private Authors author;    // ФИО автора получаем из класса Authors
+    private int numberVolumes; // количество томов
+    private int numberPages;   // количество страниц
+    private int fontSize;      // размер шрифта
+
+    @Setter(AccessLevel.NONE)
+    private double rating;     // рейтинг среди читателей(среднее арифметическое)
 
     static int totalBook;
 
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
     private int countVotes;
+
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
     private int voters;
-    private double rating;     // рейтинг среди читателей(среднее арифметическое)
 
     /**
      * @param bookName      название книги
@@ -38,15 +51,14 @@ public class Book<String> {
     /**
      * Оценить книгу
      *
-     * @param grade оценка книги пользователем
+     * @param grade оценка книги пользователем (от 0 до 5)
      */
-    public void estimate(int grade) {
-        voters++;
-        countVotes += grade;
-        rating = ((double) countVotes) / voters;
-    }
-
-    public double getRating() {
+    public double estimate(int grade) {
+        if(grade > 0 && grade <= 5){
+            voters++;
+            countVotes += grade;
+            rating = ((double) countVotes) / voters;
+        }
         return rating;
     }
 }
